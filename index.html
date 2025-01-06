@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <style>
+        /* * {
+            margin: 0px;
+            padding: 0px;
+        } */
+
+        .body {
+            font-family: Cambria, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgb(177, 210, 255);
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(48, 48, 48, 0.1);
+            border-radius: 8px;
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px auto;
+            justify-content: center;
+            height: 300px;
+            width: 500px;
+            align-items: center;
+
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            width: 250px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #9b9b9b;
+            border-radius: 4px;
+            font-size: 16px;
+            box-shadow: 5px 5px 10px #a8b8ec;
+        }
+
+
+        button {
+            width: 150px;
+            padding: 10px;
+            background-color: #a8b8ec;
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+            border: 2px solid #707a9c;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow:2px 2px 10px #707a9c ;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>To-Do List</h2>
+        <input type="text" id="itemInput" placeholder="Type something..."> 
+        <button onclick="add()">Add to the list</button>
+        <div class="itemlist">
+
+        </div>
+    </div>
+    <script>
+        let Input = document.getElementById("itemInput");
+        let text = document.querySelector(".itemlist");
+        function add() {
+            if (Input.value == "") {
+                alert("enter the task");
+            }
+            else {
+                let newElement = document.createElement("li");
+                newElement.innerHTML = `${Input.value} <i><svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></i> `;
+                text.appendChild(newElement);
+                Input.value = "";
+
+                newElement.querySelector("i").addEventListener("click", remove);
+                function remove() {
+                    newElement.remove();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
